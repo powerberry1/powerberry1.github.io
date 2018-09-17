@@ -1,0 +1,61 @@
+---
+layout: post
+title:  "HCI 1차 과제"
+subtitle: ""
+date:   2018-09-17 23:45:13 -0400
+background: ''
+---
+
+<!-- Page Header -->
+{% if page.background %}
+<header class="masthead" style="background-image: url('{{ page.background | prepend: site.baseurl | replace: '//', '/' }}')">
+{% else %}
+<header class="masthead">
+{% endif %}
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-heading">
+          <h1>[HCI 1차 과제] 여러 Application의 Interface review</h1>
+          {% if page.subtitle %}
+          <h2 class="subheading">{{ page.subtitle }}</h2>
+          {% endif %}
+          <span class="meta">Posted by
+            <a href="#">powerberry</a>
+            on {{ page.date | date: '%B %d, %Y' }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      <h2 class="subheading">1. Intelligent assistants란?</h2>
+
+    <p>지금 인공지능은 거의 모든 분야에서 큰 영향을 미치고 있으며 가장 뜨거운 이슈 중 하나일 것입니다.그에 대한 반증으로 삼성전자를 비롯해 세계 유수의 IT 회사들이 AI 관련 신기술에 대폭적인 투자를  하고 있으며,  AI 시장은 매년 50% 이상의 성장세를 지속하리라 전망되고 있습니다. 내로라하는 글로벌 IT 업체부터 스마트폰 제조사, 이동통신사까지 IT에 한 발 걸치고 있는 업체들이 최근 공들이고 있는 서비스가 있으니, 바로 '인공지능 비서 서비스(Intelligent personal assistant)' 입니다. 애플, 마이크로소프트(MS), 구글, 아마존 등 IT 업계의 빅4가 모두 자신만의 인공지능 비서 서비스를 개발해 상용화를 꾀하고 있습니다.
+    <p>인공지능 비서 서비스란 단어 그대로 인공지능이 개인의 비서 역할을 해주는 서비스를 의미합니다. 업무를 더욱 빠르게 처리할 수 있도록 사무 보조를 해주고, 삶의 질을 향상시킬 수 있도록 각종 편의 서비스를 제공하는 것이 비서의 역할. 이를 한 단어로 요약하면 바로 '자동화(알아서 척척)'입니다. 인공지능 비서는 사람 대신 인공지능이 이러한 자동화 서비스를 제공하는 것입니다.
+    <p>현재 인공지능 비서 서비스가 제공하는 서비스는 크게 13가지로 개인 일정 관리, 외국어 번역, 쇼핑하기, 사물인터넷 제어 등이 포함되어 있으며 다른 부가적인 기능들도 계속 추가되고 있어 사용자들의 편리성을 더욱 높여주고 있습니다. 대표적인 인공지능 비서 서비스로는 '아마존 알렉사', '구글 어시스턴트/구글 나우', 'MS 코타나', '애플 시리' 등이 있습니다. 저는 아이폰을 사용하므로 '애플 시리'에 대해 알아보도록 하겠습니다.
+
+      <hr>
+
+      <h2 class="subheading">2. 인공지능 비서 서비스 - 애플 시리</h2>
+
+          
+          
+      <div class="clearfix">
+
+        {% if page.previous.url %}
+        <a class="btn btn-primary float-left" href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{ page.previous.title }}">&larr; Previous<span class="d-none d-md-inline"> Post</span></a>
+        {% endif %}
+        {% if page.next.url %}
+        <a class="btn btn-primary float-right" href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{ page.next.title }}">Next<span class="d-none d-md-inline"> Post</span> &rarr;</a>
+        {% endif %}
+
+      </div>
+
+    </div>
+  </div>
+</div>
