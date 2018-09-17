@@ -1,14 +1,14 @@
 title:             Powerberry
 email:             powerberry1@naver.com
 description:       코딩 초보의 코딩 공부 블로그
-author:            Start Bootstrap
+author:            powerberry
 baseurl:           
-url:               "http://blackrockdigital.github.io"
+url:               "http://powerberry1.github.io"
 
 # Social Profiles
-twitter_username:  SBootstrap
-github_username:   BlackrockDigital
-facebook_username: StartBootstrap
+blog_username:     powerberry1
+github_username:   powerberry1
+sns_username:      powerberry93
 
 # Build settings
 markdown:          kramdown
