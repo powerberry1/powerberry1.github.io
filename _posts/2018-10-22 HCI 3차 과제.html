@@ -55,12 +55,39 @@ background: ''
         // 동영상
         <h2 class="subheading">1. Major direct user requirements</h2>
         <br>
+        <p> - 휴대폰으로 볼 수 있으면 좋겠다.</p>
+        <p> - 폴더들이 시간표 형식으로 저장될 수 있는 기능이 있으면 좋겠다.
+        </p>
+        <p> - 칠판을 잘라서 찍는 경우가 많은데 나중에 컴퓨터로 볼 때 이를 한번에 이어서 보고싶다
+        </p>
+        <br>
         <h2 class="subheading">2. Major cognitive/ergonomic requirements</h2>
+        <br>
+        <p> - 날짜별, 시간별로 사진들을 선택할 수 있음을 보여준다.
+        </p>
+        <p> - 날짜별, 시간별로 사진들을 원하는 폴더로 이동할 수 있음을 보여준다.
+        </p>
         <br>
         <h2 class="subheading">3. Usage scenarios</h2>
         <br>
+        <p> 김씨는 인간컴퓨터상호작용이라는 강의를 들어왔다. 항상 그러듯이 교수님께서는 칠판에 필기가 많으시다. 김씨는 그것을 일일이 필기하기 싫기 때문에 교수님이 친판 한 바닥 필기가 끝나면 그것을 사진을 찍어왔다. 사진을 찍고 그 사진들이 어느 수업 때인지 정리해야 하지만 귀찮은 김씨는 수업이 끝나고 바로 밥을 먹으러 갔다. 그렇게 여러 수업을 듣고 난 뒤, 2주 뒤에 김씨는 중간고사 준비를 하려고 한다. 근데 찍은 사진들이 너무 많아서 김씨는 2주 전에 들었던 인간컴퓨터상호작용과목의 필기를 찾기가 힘들다. 그래서 그는 이 서비스를 사용한다. 도구창에서 사진 찾기를 누른다. 찾으려는 사진들의 날짜와, 시간을 선택하라는 창이 뜬다. 2018-10-15, 12:00~14:00을 선택하고 인간컴퓨터상호작용 폴더를 따로 만들어 둔 뒤, 선택한 사진들을 한 번에 인간컴퓨터상호작용폴더 안의 2019-10-15, 12:00~14:00 폴더에 저장을 한다.
+        </p>
+        //사진 3장
+        <br>
         <h2 class="subheading">4. Interaction mode</h2>
+        <br>
+        <p>
+          사진 업로드
+          서비스에 접속 -> 로그인 -> 업로드 버튼 클릭 -> 업로드할 사진 선택 
 
+          사진 강의, 날짜별로 저장
+          서비스에 접속 -> 로그인 -> 사진 찾기 선택 -> 사진 찍은 날짜 입력 -> 사진 찍은 시간 범위 입력 -> 선택/폴더에 저장
+
+          사진 합치기
+          서비스에 접속 -> 로그인 -> 강의 폴더의 날짜/시간 폴더 들어감 -> 도구창에서 사진 합치기 클릭 -> 짤려서 저장된 사진들 인ㄷ공지능이 찾아서 합치기 기능 -> 저장
+
+        </p>
+        <br><br><br><br>
         {% if page.previous.url %}
         <a class="btn btn-primary float-left" href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{ page.previous.title }}">&larr; Previous<span class="d-none d-md-inline"> Post</span></a>
         {% endif %}
