@@ -125,8 +125,8 @@ background: ''
 
 
 		<section style="margin:40px">
-			<h2>Resume Authoring</h2>
-			<p style="color: red;"><strong>오른쪽 상단의 주소부분에 안전하지 않은 스크립트 로드를 허용하세요.</strong></p>
+			<h2>Resume</h2>
+			
 <div id="section">
 			<!--form method="post" action=""!-->
 			<fieldset id="name_section">
@@ -152,7 +152,7 @@ background: ''
 
 			<fieldset>
 				<legend>2. Your photo</legend>
-				<input type="file" id="imgAttach" name="imgAttach" onchange="LoadImg(this);"><!-- 연습용 -->
+				<input type="file" id="imgAttach" name="imgAttach" onchange="LoadImg(this);"><
 
 			</fieldset> 
 			
@@ -388,13 +388,14 @@ background: ''
 			<u><p id="resume_name" style="margin: 1px">Made by 박선우</p></u>
 		</div>
 	</section>
-
+	<div class="clearfix">
 	{% if page.previous.url %}
 	<a class="btn btn-primary float-left" href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{ page.previous.title }}">&larr; Previous<span class="d-none d-md-inline"> Post</span></a>
 	{% endif %}
 	{% if page.next.url %}
 	<a class="btn btn-primary float-right" href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{ page.next.title }}">Next<span class="d-none d-md-inline"> Post</span> &rarr;</a>
 	{% endif %}
+	</div>
 
     </body>
 </html>
