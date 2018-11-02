@@ -41,6 +41,10 @@ background: ''
 					var home = document.getElementById("home").value;
 					
 					var goal = document.getElementById("goal").value;
+					var re_bg = document.getElementById("bgcolor").value;
+					var re_fc = document.getElementById("fcolor").value;
+					var re_fs = document.getElementById("pont").value;
+					re_fs += "em";
 					
 					var message = "Check it out!\n"+"Name: "+firstname+" "+middlename+" "+lastname+"\nPhone#: "+phone+"\nE-mail: "+email+"\nAddress: "+address+"\nHomepage: "+home+"\nCareer goal: "+goal; 
 					
@@ -55,24 +59,11 @@ background: ''
 						education +=  "  ("+document.getElementById(id_addm).value;
 						var id_grad = "grad" + i;
 						education +=  "~"+document.getElementById(id_grad).value;
-						var id_gpa = "gpa" + i;
-						education +=  ")  GPA: "+document.getElementById(id_gpa).value;
+						
 						education += "<br>"; 
 					}
 					
-					var exper="";
-					for(i = 1; i < exp_length+1; i++){
-						var organizationid = "org" + i;
-						exper +=  document.getElementById(organizationid).value+" ";
-						var dutyid = "duty" + i;
-						exper += document.getElementById(dutyid).value;
-						var startday = "start" + i;
-						exper +=  "  ("+document.getElementById(startday).value;
-						var finishday = "finish" + i;
-						exper +=  "~"+document.getElementById(finishday).value+")";
-						exper += "<br>"; 
-					}
-
+					
 					// 정보 업데이트-------------------------------------------------
 					document.getElementById("resumeName").innerHTML = lastname+" "+middlename+" "+firstname;
 					document.getElementById("resumePhone").innerHTML = phone; 
@@ -81,8 +72,6 @@ background: ''
 					
 					document.getElementById("resumeObj").innerHTML = goal;
 					document.getElementById("resumeEdu").innerHTML = education;
-					document.getElementById("resumeEx").innerHTML = exper;
-					document.getElementById("resume_ski").innerHTML = skills;
 					document.getElementById("result").style.backgroundColor = bg;
 					document.getElementById("result").style.color = fc;
 					document.getElementById("fontSize").style.fontSize = fs;
@@ -176,11 +165,11 @@ background: ''
 				
 				<table id="edu_entry">
 					<thead>
-						<td>School</td>
-						<td>Major</td>
-						<td>Addmission date</td>
-						<td>Graduation date</td>
-						<td>GPA</td>
+						<td>학교</td>
+						<td>전공</td>
+						<td>입학일</td>
+						<td>졸업일</td>
+						
 					</thead>
 					<tbody>
 						<tr>
@@ -188,7 +177,7 @@ background: ''
 							<td><input type="text" id="major1" size="30" value=""/></td>
 							<td><input type="date" id="addm1" value=""/></td>
 							<td><input type="date" id="grad1" value=""/></td>
-							<td><input type="text" id="gpa1" size="30" value=""/></td>
+							
 						</tr>
 					</tbody>
 				</table>
