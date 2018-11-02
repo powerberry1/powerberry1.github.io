@@ -9,6 +9,14 @@ background: ''
 <html>
 
 	<body>
+			<head>
+					<meta charset="UTF-8">
+					<meta name="keywords" content="박선우,고려대학교,컴퓨터학과" />
+					<link href="default.css" rel="stylesheet" type="text/css" media="all" />
+					<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700&amp;subset=korean" rel="stylesheet">
+					<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+					<script src="http://code.jquery.com/jquery-migrate-1.1.0.js"></script>
+				</head>
 
 			<script language="javascript">
 				function toggleVisibility(id) {
@@ -183,6 +191,16 @@ background: ''
 							<td><input type="text" id="gpa1" size="30" value=""/></td>
 						</tr>
 					</tbody>
+				</table>
+			</fieldset>
+
+			<fieldset>
+				<legend>*기타 설정</legend>
+				<table>
+					<tr><td>배경 색깔</td><td><input type="color" id="bgcolor" value="#ffffff" /></td></tr>
+					<tr><td>글자 색깔</td><td><input type="color" id="fcolor"/></td></tr>
+					<tr><td>글자 크기</td><td>0em<input type="range" id="pont" min="0" max="3" value="1" step="0.1"/>3em
+					</td></tr> 
 				</table>
 			</fieldset>
 
