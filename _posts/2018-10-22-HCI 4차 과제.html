@@ -33,18 +33,16 @@ background: ''
 					var home = document.getElementById("home").value;
 					
 					var goal = document.getElementById("goal").value;
-					var edu_length = $('#edu_entry tbody tr').length;
-					var exp_length = $('#exp_entry tbody tr').length;
 					
 					var message = "Check it out!\n"+"Name: "+firstname+" "+middlename+" "+lastname+"\nPhone#: "+phone+"\nE-mail: "+email+"\nAddress: "+address+"\nHomepage: "+home+"\nCareer goal: "+goal; 
 					
 					alert(message);
 					var education="";
 					for(i = 1; i < edu_length+1; i++){
-						var id_school = "school" + i;
-						education +=  document.getElementById(id_school).value;
-						var id_major = "major" + i;
-						education += document.getElementById(id_major).value;
+						var schoolid = "school" + i;
+						education +=  document.getElementById(schoolid).value;
+						var majorid = "major" + i;
+						education += document.getElementById(majorid).value;
 						var id_addm = "addm" + i;
 						education +=  "  ("+document.getElementById(id_addm).value;
 						var id_grad = "grad" + i;
@@ -56,45 +54,36 @@ background: ''
 					
 					var exper="";
 					for(i = 1; i < exp_length+1; i++){
-						var id_organization = "org" + i;
-						exper +=  document.getElementById(id_organization).value+" ";
-						var id_duty = "duty" + i;
-						exper += document.getElementById(id_duty).value;
-						var id_start = "start" + i;
-						exper +=  "  ("+document.getElementById(id_start).value;
-						var id_finish = "finish" + i;
-						exper +=  "~"+document.getElementById(id_finish).value+")";
+						var organizationid = "org" + i;
+						exper +=  document.getElementById(organizationid).value+" ";
+						var dutyid = "duty" + i;
+						exper += document.getElementById(dutyid).value;
+						var startday = "start" + i;
+						exper +=  "  ("+document.getElementById(startday).value;
+						var finishday = "finish" + i;
+						exper +=  "~"+document.getElementById(finishday).value+")";
 						exper += "<br>"; 
 					}
-					var skills="";
-					for(i = 1; i < skill_length+1; i++){
-						var id_field = "field" + i;
-						skills +=  document.getElementById(id_field).value;
-						var id_sl = "skill_level" + i;
-						skills += " - "+document.getElementById(id_sl).value;
-						var id_detail = "detail" + i;
-						skills +=  "  ("+document.getElementById(id_detail).value+")";
-						skills += "<br>"; 
-					}
+
 					// 정보 업데이트-------------------------------------------------
-					document.getElementById("resume_name").innerHTML = lastname+" "+middlename+" "+firstname;
-					document.getElementById("resume_phone").innerHTML = phone; 
-					document.getElementById("resume_email").innerHTML = email; 
-					document.getElementById("resume_address").innerHTML = address;
+					document.getElementById("resumeName").innerHTML = lastname+" "+middlename+" "+firstname;
+					document.getElementById("resumePhone").innerHTML = phone; 
+					document.getElementById("resumeEmail").innerHTML = email; 
+					document.getElementById("resumeAdd").innerHTML = address;
 					
-					document.getElementById("resume_obj").innerHTML = goal;
-					document.getElementById("resume_edu").innerHTML = education;
-					document.getElementById("resume_exp").innerHTML = exper;
+					document.getElementById("resumeObj").innerHTML = goal;
+					document.getElementById("resumeEdu").innerHTML = education;
+					document.getElementById("resumeEx").innerHTML = exper;
 					document.getElementById("resume_ski").innerHTML = skills;
 					document.getElementById("result").style.backgroundColor = bg;
 					document.getElementById("result").style.color = fc;
-					document.getElementById("forFontSize").style.fontSize = fs;
+					document.getElementById("fontSize").style.fontSize = fs;
 					toggleVisibility("section");
 					toggleVisibility("result");
 				}
 			</script>
 
-		<div id="header-wrapper">
+		<div id="header-wrap">
 
 
 		<section style="margin:40px">
@@ -102,7 +91,7 @@ background: ''
 			
 <div id="section">
 			<!--form method="post" action=""!-->
-			<fieldset id="name_section">
+			<fieldset id="naming">
 			<legend>1. 이름</legend>
 			<table>
 			<tr><td>First name </td><td><input type="text" id="first_name" size="40" value=""/></td></tr>
@@ -116,7 +105,7 @@ background: ''
           if(value.files && value.files[0]) {
                var reader = new FileReader();
                reader.onload = function (e) {
-                    $('#resume_photo').attr('src', e.target.result);
+                    $('#photo').attr('src', e.target.result);
                }
                reader.readAsDataURL(value.files[0]);
           }
@@ -197,54 +186,6 @@ background: ''
 				</table>
 			</fieldset>
 
-			<fieldset>
-				<legend>5. 경험</legend>
-				<input type="button" id="exp_add" onclick="button2_click();" value="목록 추가"/>
-				<input type="button" id="exp_rem" onclick="button5_click();" value="목록 제거"/>
-				<script>
-					function button2_click() {
-						var ex_entryNum = $('#exp_entry tbody tr').length;
-						ex_entryNum++;
-						var rowItem = "<tr>";
-						rowItem += "<td><input type=\"text\" id=\"org";
-						rowItem += ex_entryNum;
-						rowItem += "\" size=\"30\"/></td>";
-						rowItem += "<td><input type=\"text\" id=\"duty";
-						rowItem += ex_entryNum;
-						rowItem += "\" size=\"30\"/></td>";
-						rowItem += "<td><input type=\"date\" id=\"start";
-						rowItem += ex_entryNum;
-						rowItem += "\"/>~<input type=\"date\" id=\"finish";
-						rowItem += ex_entryNum;
-						rowItem += "\"/></td>";
-						rowItem += "</tr>";
-						$('#exp_entry').append(rowItem);
-					}
-					function button5_click(){
-						if( $('#exp_entry tbody tr').length >1){ 
-							$('#exp_entry tr:last').remove();
-						}
-						else{
-							alert('No entry in a experience section!');
-						}
-					}
-				</script>
-
-				<table id="exp_entry">
-					<thead>
-						<td>Organization</td>
-						<td>Duty</td>
-						<td>Duration</td>
-					</thead>
-					<tbody>
-						<tr>
-							<td><input type="text" id="org1" size="30"/></td>
-							<td><input type="text" id="duty1" size="30"/></td>
-							<td><input type="date" id="start1"/>~<input type="date" id="finish1"/></td>
-						</tr>
-					</tbody>
-				</table>
-			</fieldset>
 			<table><tr><td><input type="button" id="test" value="제출하기" onclick="showResume();"/> <input  type="reset" value="reset"/></td></tr></table>
 			
 
@@ -258,35 +199,26 @@ background: ''
 			<h3>Resume</h3>
 			<hr>
 		</div>
-		<div id ="forFontSize">
+		<div id ="fontSize">
 		<div style="display:inline-block">
 			<div style="height: auto; width: 150px; float: left; margin: 5px 10px">
-				<img id="resume_photo" src="" alt="사진"/>
+				<img id="photo" src="" alt="사진"/>
 			</div>
 			<div style="float: left;">
-				<strong><u><p id="resume_name" style="margin: 1px">이름</p></u></strong>
+				<strong><u><p id="resumeName" style="margin: 1px">이름</p></u></strong>
 				<span><STRONG>&nbsp; Contact & Address: </STRONG></span><br>
-				<span>&nbsp; Call No : </span><span id="resume_phone">폰번</span><br>
-				<span>&nbsp; E-mail : </span><span id="resume_email">이메일</span><br>
-				<span>&nbsp; Address : </span><span id="resume_address">주소</span><br>
+				<span>&nbsp; Call No : </span><span id="resumePhone">폰번</span><br>
+				<span>&nbsp; E-mail : </span><span id="resumeEmail">이메일</span><br>
+				<span>&nbsp; Address : </span><span id="resumeAdd">주소</span><br>
 			</div>
 		</div>
 			<hr>
-			<span>&nbsp; Objective</span><br>
-			<p id="resume_obj">내용</p>
-			<hr>
 			<span>&nbsp; Education </span>
-			<p id="resume_edu">교육내용</p>
-			<hr>
-			<span>&nbsp; Experience </span>
-			<p id="resume_exp">경험내용</p>
-			<hr>
-			<span>&nbsp; Skill </span>
-			<p id="resume_ski">기술내용</p>
+			<p id="resumeEdu">교육내용</p>
 			<hr>
 		</div>
 		<div style="text-align: center; font-size: 0.5em;">
-			<u><p id="resume_name" style="margin: 1px">Made by 박선우</p></u>
+			<u><p id="resumeName" style="margin: 1px">Made by 박선우</p></u>
 		</div>
 	</section>
 	<div class="clearfix">
