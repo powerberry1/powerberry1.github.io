@@ -7,7 +7,7 @@ background: ''
 ---
 <div class="container">
 
-			<h1>HCI 4_1</h1>
+			<h1>GUI</h1>
 			<canvas id="box" width="1000" height="1000"></canvas>
 			
 			<script type="text/javascript">
@@ -29,7 +29,7 @@ background: ''
 					con.closePath();
           //
 					con.beginPath();
-					con.font = "10pt Georgia";
+					con.font = "15pt Georgia";
 					con.fillStyle = colorT;
 					con.fillText(title,xstart+xs/2,ystart+20);
 					con.closePath();
@@ -46,7 +46,7 @@ background: ''
 					con.closePath();
           //닫기
                     con.beginPath();
-					con.lineWidth=1.5;
+					con.lineWidth=2;
 					con.strokeStyle="black";
 					con.fillStyle="white";	
 					con.fillRect(xstart+xs-20,ystart+ys-20, 15,15);
@@ -58,71 +58,99 @@ background: ''
 					con.closePath();
 				}
                 
-				function buttonCreate(xstart,ystart, xs,ys,boxW,colorT,boxC, boxboundC,text){
+				function buttonCreate(xstart,ystart, xs, ys, boxW, textC, backgroundC, boxboundC, text){
 					var can = document.getElementById("box");
 					var con = can.getContext("2d");
-
+					// box
 					con.beginPath();
-					con.strokeStyle=boxboundC;	
+	 				con .strokeStyle=boxboundC; 	
+					con.lineJoin="round";
 					con.lineWidth=boxW;
-					con.rect(xstart,ystart, xs,ys);
-					con.fillRect(xstart,ystart, xs,ys);
+					con.rect(xstart,ystart, xs, ys);
+					con.fillStyle=backgroundC;
+					con.fillRect(xstart,ystart, xs, ys);
 					con.stroke();
 					con.closePath();
-
+					// text box
 					con.beginPath();
-					con.strokeStyle=colorT;
-					con.font = "15pt Georgia";
+					con.strokeStyle=textC;
+					con.font = "10pt Georgia";
 					con.textAlign = "center";
-					con.fillStyle = colorT;
-					con.fillText(text,xstart+xs,ystart+ys);
+					con.fillStyle = textC;
+					con.fillText(text,xstart+xs/ 2,ystart+ys/2);
 					con.closePath();
 				}
 				
-				function menuCreate(xstart,ystart, xs,ys,entryY,boxboundW,N, boxboundC,backgroundT, colorT,title){
+				function menuCreate(xstart,ystart, xs,ys,entryY,boxboundW,entryN, boxboundC,textB, textC,title){
 					var can = document.getElementById("box");
 					var con = can.getContext("2d");
 					var content = "sample ";
-
+					// 4각형 타이틀 그리기
 					con.beginPath();
 					con.strokeStyle=boxboundC;	
 					con.rect(xstart,ystart, xs,ys);
 					con.lineWidth=boxboundW;
-					con.fillStyle=backgroundT;
+					con.fillStyle=textB;
 					con.fillRect(xstart,ystart, xs,ys);
 					con.stroke();
 					con.closePath();
 					
+					// 타이틀 안의 제목 
 					con.beginPath();
-					con.strokeStyle=colorT;
-                    con.textAlign = "center";
-					con.font = "10pt Georgia";
-					
-					con.fillStyle = colorT;
+					con.strokeStyle=textC;
+					con.font = "15pt Georgia";
+					con.textAlign = "center";
+					con.fillStyle = textC;
 					con.fillText(title,xstart+xs/2,ystart+30);
 					con.closePath();
 					i=0;
-					for(i=0;i<N;i++){
+					for(i=0;i<entryN;i++){
 						con.beginPath();
+						con.strokeStyle=boxboundC;	
 						con.rect(xstart,ystart+ys+(i*entryY), xs,entryY);
+						con.lineWidth=boxboundW;
+						con.fillStyle=textB;
 						con.fillRect(xstart,ystart+ys+(i*entryY), xs,entryY);
 						con.stroke();
 						con.closePath();
 						con.beginPath();
-						con.strokeStyle=colorT;
-                        con.textAlign = "center";
-						con.font = "10pt Georgia";
-						con.fillStyle = colorT;
+						con.strokeStyle=textC;
+						con.font = "15pt Georgia";
+						con.textAlign = "center";
+						con.fillStyle = textC;
 						j= i+1;
-						var realtitle = "sample " + j;
+						var realtitle = "item " + j;
 						con.fillText(realtitle,xstart+xs/2,entryY*i+ys+ystart+25);
 						con.closePath();
 					}
 				}
+                function textCreate(xstart, ystart, xs, ys, boxW,textC, backgroundC, boxboundC, text){
+					var canv = document.getElementById("box");
+					var con = canvas.getContext("2d");
 
-				menuCreate(10, 350, 200 , 40 , 40, 5, 5, "white","grey","black","menu" );
-				windowCreate(10, 7, 200, 300, 5, "white","puple","white","sunwoo_Win");
-				buttonCreate(300, 100, 60, 10, 2,"black","white","blue","sunwoo_But");
+					con.beginPath() ;
+	 				con.strokeStyle=boxboundC; 	
+					con.lineWidth=boxW;
+					con.rect(xstart,ystart, xs,ys);
+					con.fillStyle=backgroundC;
+					con.fillRect(xstart,ystart, xs,ys);
+					con.stroke();
+					con.closePath();
+
+					con.beginPath();
+					con.strokeStyle=textC;
+					con.font = "10pt Georgia";
+					con.textAlign = "center";
+					con.fillStyle = textC;
+					con.fillText(text,xstart+xs/2,ystart+ys/2);
+					con.closePath();
+				}
+
+				menuCreate(10, 400, 200 , 50 , 30, 3, 3, "black","white","black","My_menu" );
+                
+				windowCreate(10,10,200,300,2,"black","white","black","My_window");
+				buttonCreate(300, 10, 100, 25, 2,"black","white","black","My_Button");
+                textCreate(10, 200, 200, 200, 1,"black","black","white","My_text_box");
 			</script>
 		
 		</div>
