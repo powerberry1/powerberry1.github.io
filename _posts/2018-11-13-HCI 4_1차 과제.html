@@ -61,7 +61,7 @@ background: ''
 				function buttonCreate(xstart,ystart, xs, ys, boxW, textC, backgroundC, boxboundC, text){
 					var can = document.getElementById("box");
 					var con = can.getContext("2d");
-					// box
+
 					con.beginPath();
 	 				con .strokeStyle=boxboundC; 	
 					con.lineJoin="round";
@@ -71,7 +71,7 @@ background: ''
 					con.fillRect(xstart,ystart, xs, ys);
 					con.stroke();
 					con.closePath();
-					// text box
+
 					con.beginPath();
 					con.strokeStyle=textC;
 					con.font = "10pt Georgia";
@@ -85,7 +85,7 @@ background: ''
 					var can = document.getElementById("box");
 					var con = can.getContext("2d");
 					var content = "sample ";
-					// 4각형 타이틀 그리기
+
 					con.beginPath();
 					con.strokeStyle=boxboundC;	
 					con.rect(xstart,ystart, xs,ys);
@@ -94,8 +94,7 @@ background: ''
 					con.fillRect(xstart,ystart, xs,ys);
 					con.stroke();
 					con.closePath();
-					
-					// 타이틀 안의 제목 
+
 					con.beginPath();
 					con.strokeStyle=textC;
 					con.font = "15pt Georgia";
