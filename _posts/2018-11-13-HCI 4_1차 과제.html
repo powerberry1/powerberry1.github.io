@@ -1,0 +1,128 @@
+---
+layout: post
+title:  "HCI 2차 과제"
+subtitle: ""
+date:   2018-10-02 23:45:13 -0400
+background: ''
+---
+<div class="container">
+
+			<h1>HCI 4_1</h1>
+			<canvas id="box" width="1000" height="1000"></canvas>
+			
+			<script type="text/javascript">
+				function windowCreate(xstart,ystart,xs,ys,boxboundW,boxboundC,backgroundT,colorT, title){
+					var can = document.getElementById("box");
+					var con = can.getContext("2d");
+
+          //
+					con.beginPath();
+					con.strokeStyle=boxboundC;	
+					con.rect(xstart,ystart, xs,ys);
+					con.lineWidth=boxboundW;
+                    con.fillStyle=backgroundT;
+					con.fillRect(xstart,ystart, xs,ys);
+          //
+					con.moveTo(xstart,ystart+45);
+					con.lineTo(xstart+xs,ystart+45)
+					con.stroke();
+					con.closePath();
+          //
+					con.beginPath();
+					con.font = "10pt Georgia";
+					con.fillStyle = colorT;
+					con.fillText(title,xstart+xs/2,ystart+20);
+					con.closePath();
+
+          //최소화
+					con.beginPath();
+					con.lineWidth=2;
+					con.strokeStyle="black";
+					con.fillStyle="white";	
+					con.fillRect(xstart+xs-40,ystart+ys-20, 15,15);
+					con.moveTo(xstart+xs-40,ystart+ys-10);
+					con.lineTo(xstart+xs-20,ystart+ys-10);
+					con.stroke();
+					con.closePath();
+          //닫기
+                    con.beginPath();
+					con.lineWidth=1.5;
+					con.strokeStyle="black";
+					con.fillStyle="white";	
+					con.fillRect(xstart+xs-20,ystart+ys-20, 15,15);
+					con.moveTo(xstart+xs-20,ystart+ys-20);
+					con.lineTo(xstart+xs-5,ystart+ys-5);
+					con.moveTo(xstart+xs-20,ystart+ys-5);
+					con.lineTo(xstart+xs-5,ystart+ys-20);
+					con.stroke();
+					con.closePath();
+				}
+                
+				function buttonCreate(xstart,ystart, xs,ys,boxW,colorT,boxC, boxboundC,text){
+					var can = document.getElementById("box");
+					var con = can.getContext("2d");
+
+					con.beginPath();
+					con.strokeStyle=boxboundC;	
+					con.lineWidth=boxW;
+					con.rect(xstart,ystart, xs,ys);
+					con.fillRect(xstart,ystart, xs,ys);
+					con.stroke();
+					con.closePath();
+
+					con.beginPath();
+					con.strokeStyle=colorT;
+					con.font = "15pt Georgia";
+					con.textAlign = "center";
+					con.fillStyle = colorT;
+					con.fillText(text,xstart+xs,ystart+ys);
+					con.closePath();
+				}
+				
+				function menuCreate(xstart,ystart, xs,ys,entryY,boxboundW,N, boxboundC,backgroundT, colorT,title){
+					var can = document.getElementById("box");
+					var con = can.getContext("2d");
+					var content = "sample ";
+
+					con.beginPath();
+					con.strokeStyle=boxboundC;	
+					con.rect(xstart,ystart, xs,ys);
+					con.lineWidth=boxboundW;
+					con.fillStyle=backgroundT;
+					con.fillRect(xstart,ystart, xs,ys);
+					con.stroke();
+					con.closePath();
+					
+					con.beginPath();
+					con.strokeStyle=colorT;
+                    con.textAlign = "center";
+					con.font = "10pt Georgia";
+					
+					con.fillStyle = colorT;
+					con.fillText(title,xstart+xs/2,ystart+30);
+					con.closePath();
+					i=0;
+					for(i=0;i<N;i++){
+						con.beginPath();
+						con.rect(xstart,ystart+ys+(i*entryY), xs,entryY);
+						con.fillRect(xstart,ystart+ys+(i*entryY), xs,entryY);
+						con.stroke();
+						con.closePath();
+						con.beginPath();
+						con.strokeStyle=colorT;
+                        con.textAlign = "center";
+						con.font = "10pt Georgia";
+						con.fillStyle = colorT;
+						j= i+1;
+						var realtitle = "sample " + j;
+						con.fillText(realtitle,xstart+xs/2,entryY*i+ys+ystart+25);
+						con.closePath();
+					}
+				}
+
+				menuCreate(10, 350, 200 , 40 , 40, 5, 5, "white","grey","black","menu" );
+				windowCreate(10, 7, 200, 300, 5, "white","puple","white","sunwoo_Win");
+				buttonCreate(300, 100, 60, 10, 2,"black","white","blue","sunwoo_But");
+			</script>
+		
+		</div>
