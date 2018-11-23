@@ -1,0 +1,106 @@
+---
+layout: post
+title:  "HCI 4_1_2차 과제"
+subtitle: ""
+date:   2018-11-20 23:45:13
+background: ''
+---
+<div class="container">
+
+            <h1>TREE</h1>
+            <canvas id="box" width="1000" height="1000" board></canvas>
+
+            <script type="text/javascript">
+                // 트리 구조
+                Tree = function(idTree, label) {
+                    this.idTree = idTree;
+                    this.label = label;
+                    this.node = new Array();
+                    this.nodeNum = 0;
+                }
+                Tree.prototype.create_root = function(idRootTree , labelRoot){
+                    this.idTree = idRootTree;
+                    this.label = labelRoot;
+                }
+                // Node 추가
+                Tree.prototype.add_node = function( tree ) {
+                    this.node[tree.idTree] = tree;
+                    this.nodeNum++;
+                }
+                // Node 삭제
+                Tree.prototype.delete_node = function( idNode ) {
+                    delete this.node[idNode];
+                    this.nodeNum--;
+                }
+                // 원하는 Node 찾기
+                Tree.prototype.search_node = function( idNode ) {
+                    if(this.idTree == idNode){
+                        return this;
+                    }
+                    else if(this.nodeNum == 0 ){
+                        return null;
+                    }
+                    else{
+                        for( var id in this.node ){
+                            node = this.node[id];
+                            node.search_node(idNode);
+                        }
+                    }
+                }
+                // 화면 출력
+                Tree.prototype.print_tree = function(x, y) {
+                
+                    var canvas = document.getElementById("box");
+                    var context = canvas.getContext("2d");
+                
+                    // 4각형 타이틀 그리기
+                    context.beginPath();
+                    context.rect(x,y, 100,50);
+                    context.fillStyle="#F5FBEF";
+                    context.fillRect(x,y, 100,50);
+                    context.stroke();
+                    context.closePath();
+                    
+                
+                    // 타이틀 안의 제목 
+                    context.beginPath();
+                    context.fillStyle = "black";
+                    context.font = "10pt Georgia";
+                    context.textAlign = "center";
+                    context.fillText(this.label,x+50,y+25);
+                    context.closePath();
+                
+                    if( this.nodeNum > 0 ){
+                        var num=0;
+                        for( var idNode in this.node ){
+                            num++;
+                            node = this.node[idNode];
+                            // 갈라줄 작대기 하나
+                            context.moveTo(x+50, y+50);
+                            context.lineTo(x-50+(num-1)*150, y+100);
+                            context.stroke();
+                            context.closePath();
+                            node.print_tree( x-250+num*150, y+100);
+                        }
+                    }
+                
+                }
+                // Window sample
+                var power = new Tree();
+                power.create_root("root","power");
+                power.add_node( new Tree("be","berry") );
+                power.add_node( new Tree("bl","blog") );
+                
+                var be = power.node["be"];
+                be.add_node(new Tree("be1","트리"));
+                be.add_node(new Tree("be2","만들기"));
+
+                var bl = power.ode["bl"];
+                bl.add_node(new Tree("bl1","연습"));
+                power.print_tree( 250 , 20 );
+
+        </script>
+        
+
+		
+</div>
