@@ -84,16 +84,16 @@ background: ''
                 }
 
                 var power = new Tree();
-                power.create_root("root","power");
-                power.add_node( new Tree("be","berry") );
-                power.add_node( new Tree("bl","blog") );
+                power.create_root("root","강의 모으기");
+                power.add_node( new Tree("be","강의별") );
+                power.add_node( new Tree("bl","시간별") );
                 
                 var be = power.node["be"];
-                be.add_node(new Tree("be1","트리"));
-                be.add_node(new Tree("be2","만들기"));
+                be.add_node(new Tree("be1","11/10"));
+                be.add_node(new Tree("be2","11/20"));
 
                 var bl = power.node["bl"];
-                bl.add_node(new Tree("bl1","연습"));
+                bl.add_node(new Tree("bl1","6"));
                 power.print_tree( 250 , 20 );
 
         </script>
