@@ -1,0 +1,131 @@
+---
+layout: post
+title:  "HCI 4-2차 과제"
+subtitle: ""
+date:   2018-11-26 23:45:13 -0400
+background: ''
+---
+
+<div class="container">
+  <div class="row">
+        <h1 class="subheading">Refine your project proposal</h2>
+        <br><br><br>
+          <h2 class="subheading">1. UPDATE USER ANALYSIS/RESEARCH</h2>
+        <p> * 수정 전
+            Target User Group : Students
+            Platform : Window PC
+            * 수정 후
+            Target User Group : Students & Traveler
+            Platform : Window PC & Mobile device
+        </p>
+        <br><br>
+        <h2 class="subheading">2. UPDATE FUNCTIONAL AND UI REQUIREMENTS</h2>
+        <br>
+        <p> * 수정 전
+            [Functional Requirement]
+            1. 사진 편집 기능
+            2. 사진 불러오기/저장 기능
+            3. 사진 모으기 기능
+            4. 사진 합치기 기능
+            
+            [UI Requirement]
+            1. 전체 사진을 특정 시간대별로 모아주는 기능
+            2. 사진 확대 시 보정 기능
+            3. 보기 쉬운 User Interface 사용
+            
+            * 수정 후
+            [Functional Requirement]
+            1. 사진 편집 기능
+            2. 사진 불러오기/저장 기능
+            3. 사진 모으기 기능
+            4. 사진 찾아주기 기능
+            
+            [UI Requirement]
+            1. 전체 사진을 특정 시간대별로 모아주는 기능
+            2. 사진 확대 시 보정 기능
+            3. 보기 쉬운 User Interface 사용
+            4. 사진 속 글자들 중에서 원하는 글자 검색 기능
+        </p>
+        <br><br>
+        <h2 class="subheading">3. UPDATE THE SCENARIOS</h2>
+        <br>
+        <p> * 수정 전
+            김씨는 인간컴퓨터상호작용이라는 강의를 들어왔다. 항상 그러듯이 교수님께서는 칠판에 필기가 많으시다. 김씨는 그것을 일일이 필기하기 싫기 때문에 교수님이 친판 한 바닥 필기가 끝나면 그것을 사진을 찍어왔다. 사진을 찍고 그 사진들이 어느 수업 때인지 정리해야 하지만 귀찮은 김씨는 수업이 끝나고 바로 밥을 먹으러 갔다. 그렇게 여러 수업을 듣고 난 뒤, 2주 뒤에 김씨는 중간고사 준비를 하려고 한다. 근데 찍은 사진들이 너무 많아서 김씨는 2주 전에 들었던 인간컴퓨터상호작용과목의 필기를 찾기가 힘들다. 그래서 그는 이 서비스를 사용한다. 도구창에서 사진 찾기를 누른다. 찾으려는 사진들의 날짜와, 시간을 선택하라는 창이 뜬다. 2018-10-15, 12:00~14:00을 선택하고 인간컴퓨터상호작용 폴더를 따로 만들어 둔 뒤, 선택한 사진들을 한 번에 인간컴퓨터상호작용폴더 안의 2019-10-15, 12:00~14:00 폴더에 저장을 한다.
+            
+            * 수정 후
+            [예시 1]
+            1. 강의 들을 시 필기 대신 사진을 찍음
+            2. 인간과컴퓨터상호작용 시간에 찍은 사진을 찾고 싶음
+            3. 2018/9/1~2018/12/31 까지 날짜 설정
+            4. 월,수 요일 설정
+            5. 12:00~2:00 시간 설정
+            6. 설정한 날짜/요일/시간에 찍은 사진들을 날짜별로 모아줌
+            
+            [예시 2]
+            1. 찍은 필기 사진들 중에서 RGB란 단어를 찾고 싶음
+            2. 단어 찾기 기능 선택
+            3. RGB 입력
+            4. RGB가 찍힌 사진들 체크해서 볼 수 있게 해줌
+            
+            [예시 3]
+            1. 4/3~4/10 여행을 갔다옴
+            2. 그때 찍은 사진들만 모으고 싶음
+            3. 4/3~4/10 날짜 선택
+            </p>
+        <br><br>
+        <h2 class="subheading">4. UPDATE THE TASK MODEL</h2>
+        <br>
+        <p> - 실행환경은 Windows OS이다.</p>
+        <p> - 타겟 유저는, 주로 강의를 많이 듣는 대학생들이다.</p>
+        <p> - 항상 찍는 강의 시간에 필기 사진을 찍으니, 주로 찍는 시간대별로 사진을 쉽게 정렬할 수 있다.</p>
+        <br><br>
+    <div class="clearfix">
+
+        <h1 class="subheading">2. User Analysis</h2>
+        <br><br>
+        // 동영상
+        <h2 class="subheading">1. Major direct user requirements</h2>
+        <br>
+        <p> * 수정 전
+
+            Task Model 1: 강의별로 사진 모으기
+            1. 사진 모으기 버튼을 클릭한다.
+            2. 언제 찍은 사진을 모을지 정한다.(날짜 기간, 요일, 시간)
+            3. 모은 사진들의 폴더 이름을 지정한다.(인간과컴퓨터상호작용)
+            4. 인간과컴퓨터상호작용이란 큰 폴더 아래, 날짜별로 사진들이 따로 모아진다.
+            
+            Task Model 2: 사진 합치기
+            1. 원하는 사진이 있는 폴더를 들어간다.
+            2. 사진 합치기 버튼을 클릭한다.
+            3. 예를 들어 칠판이 커서 나눠서 찍어야 했던 사진들이 합쳐져서 하나의 사진으로 변환된다.
+            
+            * 수정 후
+            선행 : 사진첩에 있는 사진들 불러오기
+            
+            Task Model 1: 강의별로 사진 모으기
+            1. 사진 모으기 버튼을 클릭한다.
+            2. 언제 찍은 사진을 모을지 정한다.(날짜 기간, 요일, 시간)
+            3. 모은 사진들의 폴더 이름을 지정한다.(인간과컴퓨터상호작용)
+            4. 인간과컴퓨터상호작용이란 큰 폴더 아래, 날짜별로 사진들이 따로 모아진다.
+            
+            Task Model 2: 글자(용어 찾기)
+            1. 공부하고자 하는 교과목 폴더를 들어간다.(전체에서 찾고 싶으면 메인 페이지에서)
+            2. 글자 찾기 버튼을 누른다.
+            3. 찾고 싶은 글자를 입력한다.
+            4. 그 글자가 포함된 사진들을 찾아준다.
+        </p>
+
+        <h1 class="subheading">2. Design the interface for your proposal</h2>
+        <br>
+
+        <br><br><br><br>
+        {% if page.previous.url %}
+        <a class="btn btn-primary float-left" href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{ page.previous.title }}">&larr; Previous<span class="d-none d-md-inline"> Post</span></a>
+        {% endif %}
+        {% if page.next.url %}
+        <a class="btn btn-primary float-right" href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{ page.next.title }}">Next<span class="d-none d-md-inline"> Post</span> &rarr;</a>
+        {% endif %}
+
+      </div>
+  </div>
+</div>
