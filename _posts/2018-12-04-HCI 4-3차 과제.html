@@ -1,0 +1,233 @@
+---
+layout: post
+title:  "HCI 4_1_3차 과제"
+subtitle: ""
+date:   2018-12-04 23:45:13
+background: ''
+---
+<div class="container">
+
+			<h1>Tree structure</h1>
+			<p>Tree : Nothing happend
+                <br>
+                UI : each UI selected</p>
+            <span id="result">Click the canvas</span>
+            <br>
+			<canvas id="box" width="900" height="900" board></canvas>
+                
+				<script type="text/javascript">
+
+				objNum=0;
+				UIobject = new Array();
+				p = 0;
+
+				Tree = function(treeID, label) {
+					this.treeID = treeID;
+					this.label = label;
+					this.node = new Array();
+					this.nodeCnt = 0;
+					this.priority;
+					this.top_left;
+					this.bottom_right;
+				}
+				Tree.prototype.addNode = function( tree ) {
+					this.node[tree.treeID] = tree;
+					this.nodeCnt++;
+				}
+				Tree.prototype.delNode = function( nodeID ) {
+					delete this.node[nodeID];
+					this.nodeCnt--;
+				}
+				Tree.prototype.searchNode = function( nodeID ) {
+					if(this.treeID == nodeID){
+						return this;
+					}
+					else if(this.nodeCnt == 0 ){
+						return null;
+					}
+					else{
+						for( var id in this.node ){
+							node = this.node[id];
+							node.searchNode(nodeID);
+						}
+					}
+				}
+
+				Tree.prototype.prtTree = function(x, y) {
+				
+					var canvas = document.getElementById("box");
+                    var context = canvas.getContext("2d");
+				
+					context.beginPath();
+					context.rect(x,y, 100,50);
+					context.fillStyle="#FFFFFF";
+					context.fillRect(x,y, 100,50);
+					context.stroke();
+					context.closePath();
+					
+					context.beginPath();
+					context.fillStyle = "black";
+					context.font = "10pt Georgia";
+					context.textAlign = "center";
+					context.fillText(this.label,x+50,y+25);
+					context.closePath();
+				
+					if( this.nodeCnt > 0 ){
+						var num=0;
+						for( var nodeID in this.node ){
+							num++;
+							node = this.node[nodeID];
+							context.moveTo(x +50, y+50);
+							context.lineTo(x +50 - 100 +(num-1)*150, y+100);
+							context.stroke();
+							context.closePath();
+							node.prtTree( x - 250 + num*150, y+100);
+						}
+					}
+				
+				}
+
+				window_screen = function(startX,startY,sX,sY,title) {
+					this.top_left_x=startX;
+					this.top_left_y=startY;
+					this.width_len=sX;
+					this.height_len=sY;
+					this.title_content=title;
+					this.tree = new Tree(title,title+"Root");
+					
+				}
+				window_screen.prototype.create_window= function(){
+					var canvas = document.getElementById("box");
+					var context = canvas.getContext("2d");
+					UIobject[objNum] = this;
+					objNum++;
+					this.tree.priority = p;
+					p++;
+
+					context.beginPath();
+					context.rect(this.top_left_x,this.top_left_y, this.width_len, this.height_len);
+					context.fillStyle="white";
+					context.fillRect(this.top_left_x,this.top_left_y, this.width_len, this.height_len);
+
+					context.moveTo(this.top_left_x,this.top_left_y+45);
+					context.lineTo(this.top_left_x + this.width_len,this.top_left_y+45);
+					context.stroke();
+					context.closePath();
+
+					context.beginPath();
+					context.fillStyle="black";
+					context.font = "15pt Georgia";
+					context.textAlign = "center";
+					context.fillText(this.title_content,this.top_left_x+this.width_len/2,this.top_left_y+30);
+					context.closePath();
+
+					context.beginPath();
+					context.lineWidth=1.5;
+					context.strokeStyle="black";
+					context.fillStyle="white";	
+					context.fillRect(this.top_left_x+this.width_len-40,this.top_left_y+this.height_len-20, 15,15);
+					context.moveTo(this.top_left_x+this.width_len-40,this.top_left_y+this.height_len-13);
+					context.lineTo(this.top_left_x+this.width_len-25,this.top_left_y+this.height_len-13);
+					context.stroke();
+					context.closePath();
+					this.tree.addNode( new Tree(this.tree.treeID+" - button",this.tree.treeID+" - button") );
+
+					context.beginPath();
+					context.lineWidth=1.5;
+					context.strokeStyle="black";
+					context.fillStyle="white";	
+					context.fillRect(this.top_left_x+this.width_len-20,this.top_left_y+this.height_len-20, 15,15);
+					context.moveTo(this.top_left_x+this.width_len-20,this.top_left_y+this.height_len-20);
+					context.lineTo(this.top_left_x+this.width_len-5,this.top_left_y+this.height_len-5);
+					context.moveTo(this.top_left_x+this.width_len-20,this.top_left_y+this.height_len-5);
+					context.lineTo(this.top_left_x+this.width_len-5,this.top_left_y+this.height_len-20);
+					context.stroke();
+					context.closePath();
+					this.tree.addNode( new Tree(this.tree.treeID+" x button",this.tree.treeID+" x button") );
+				}
+
+				textbox_screen = function(startX,startY,sX,sY,title,text,bg) {
+					this.top_left_x=startX;
+					this.top_left_y=startY;
+					this.width_len=sX;
+					this.height_len=sY;
+					this.title_content=title;
+					this.text_color = text;
+					this.background = bg;
+					this.tree = new Tree(title,title);
+				}
+				
+				textbox_screen.prototype.create_textbox= function(){
+					var canvas = document.getElementById("box");
+					var context = canvas.getContext("2d");
+					UIobject[objNum] = this;
+					objNum++;
+					this.tree.priority = p;
+					p++;
+
+					context.beginPath();
+					context.rect(this.top_left_x,this.top_left_y, this.width_len, this.height_len);
+					context.fillStyle=this.background;
+					context.fillRect(this.top_left_x,this.top_left_y, this.width_len, this.height_len);
+					context.closePath();
+
+					context.beginPath();
+					context.font = "10pt Georgia";
+					context.textAlign = "center";
+					context.fillStyle = this.text_color;
+					context.fillText(this.title_content,this.top_left_x+this.width_len/2,this.top_left_y+this.height_len/2);
+					context.closePath();
+				}
+
+				var window1 = new window_screen(10, 30, 200 , 200 , "win1" );
+				window1.create_window();
+				window1.tree.prtTree(120,500);
+				var window2 = new window_screen(300, 30, 200 , 200 , "win2" );
+				window2.create_window();
+				window2.tree.prtTree(400,500);
+
+                var text1 = new textbox_screen(10, 300 , 100, 100, "textbox1","white","black");
+				text1.create_textbox();
+				var text2 = new textbox_screen(300, 300 , 100, 100, "textbox2","white","black");
+				text2.create_textbox();
+
+				window.onload = function(){
+					canvas = document.getElementById("box");
+					if (canvas == null || canvas.getContext == null) return;
+					ctx = canvas.getContext("2d");
+		 			canvas.onmousedown = onmousedown;
+				}
+				function onmousedown(e) {
+					e.preventDefault();
+					e.stopPropagation();
+        		    x = e.layerX;
+		            y = e.layerY;
+					findUI(x,y);
+				}
+				function findUI(x, y){
+					var maxPrio = -1;
+					var max=0;
+					for(i=0;i<objNum;i++){
+						var UI_len_x = UIobject[i].top_left_x +UIobject[i].width_len;
+						var UI_len_y = UIobject[i].top_left_y +UIobject[i].height_len;
+						if( UI_len_x> x && x>UIobject[i].top_left_x && UI_len_y > y && y > UIobject[i].top_left_y){
+							if(maxPrio < UIobject[i].tree.priority ){
+								maxPrio = UIobject[i].tree.priority;
+								max=i;
+							}
+						}
+					}
+					if(maxPrio == -1){
+						result = "NO UI object is selected";
+						document.getElementById("result").innerHTML = result;
+					}
+					else{
+						result = UIobject[max].tree.label;
+                        result += " is selected";
+						document.getElementById("result").innerHTML = result;
+					}
+				}
+				
+		</script>
+			
+        </div>
